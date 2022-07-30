@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+struct DAY
+{
+	int year;
+	int month;
+	int day;
+};
+int main()
+{
+	int i, j;
+	int cent=0;
+	struct DAY days;
+	char time[20] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+	printf("请输入现在的年 月 日：\n");
+	scanf("%d %d %d", &days.year, &days.month, &days.day);
+	for (i = 0; i < days.month; i++)
+	{
+		cent = cent + time[i];
+	}
+	if ((days.year % 4 == 0 && days.year % 100 != 0 || days.year % 400 == 0) && days.month >= 3)
+	{
+		cent=cent + 1;
+	}
+	cent = cent + days.day;
+	printf("是第 %d 天\n", cent);
+	return 0;
+}
